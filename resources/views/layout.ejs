@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Restaurant</title>
+    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <nav class="container mx-auto flex items-center justify-between h-1/5 py-4">
+      <div class="logo mx-20 flex items-center">
+        <a href="/">
+          <img src="/image/logo.png" alt="" />
+        </a>
+      </div>
+      <div class="">
+        <ul class="flex items-center mx-20">
+          <li class="ml-6">
+            <a class="font-medium capitalize" href="#">menu</a>
+          </li>
+          <li class="ml-6">
+            <a class="font-medium capitalize" href="#">offers</a>
+          </li>
+          <li class="ml-6">
+            <a class="font-medium capitalize" href="/register">register</a>
+          </li>
+          <li class="ml-6">
+            <a class="font-medium capitalize" href="/login">login</a>
+          </li>
+          <li
+            class="ml-6 inline-block px-4 pt-2 py-2 rounded-full flex items-center"
+          >
+            <span id="cart-counter" class="text-white font-bold pr-2"
+              ><%= session.cart ? session.cart.totalQnt : '0' %></span
+            >
+            <a href="/cart"><img src="/image/cart.png" alt="" /></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- //! website hero section -->
+
+    <%- body %>
+
+    <script src="/javascript/script.js"></script>
+  </body>
+</html>
