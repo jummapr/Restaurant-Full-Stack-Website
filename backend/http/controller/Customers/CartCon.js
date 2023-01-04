@@ -29,20 +29,6 @@ const CartController = () => {
       }
 
       return res.json({ totalQnt : req.session.cart.totalQnt })
-
-      // if (!cart.items[req.body._id]) {
-      //   cart.items[req.body._id] = {
-      //     item: req.body,
-      //     qty: 1,
-      //   };
-      //   cart.totalQty = cart.totalQty + 1;
-      //   cart.totalPrice = cart.totalPrice + req.body.price;
-      // } else {
-      //   cart.items[req.body._id].qty = cart.items[req.body._id].qty + 1;
-      //   cart.totalQty = cart.totalQty + 1;
-      //   cart.totalPrice = cart.totalPrice + req.body.price;
-      // }
-      // return res.json({ totalQty: req.session.cart.totalQty });
     },
   };
 };

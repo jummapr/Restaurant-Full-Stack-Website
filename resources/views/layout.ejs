@@ -20,25 +20,35 @@
       <div class="">
         <ul class="flex items-center mx-20">
           <li class="ml-6">
-            <a class="font-medium capitalize" href="#">menu</a>
+            <a class="font-medium capitalize" href="/">menu</a>
           </li>
           <li class="ml-6">
             <a class="font-medium capitalize" href="#">offers</a>
           </li>
+          <% if(user) {%>
+          <li class="ml-6">
+            <form id="logout" action="/logout" method="POST">
+            <a onclick="document.getElementById('logout').submit()" class="font-medium capitalize" style="cursor: pointer;">Logout</a>
+          </form>
+          </li>
+          <% } else { %>
           <li class="ml-6">
             <a class="font-medium capitalize" href="/register">register</a>
           </li>
           <li class="ml-6">
             <a class="font-medium capitalize" href="/login">login</a>
           </li>
+          <% } %>
+          <a href="/cart">
           <li
             class="ml-6 inline-block px-4 pt-2 py-2 rounded-full flex items-center"
           >
             <span id="cart-counter" class="text-white font-bold pr-2"
               ><%= session.cart ? session.cart.totalQnt : '0' %></span
             >
-            <a href="/cart"><img src="/image/cart.png" alt="" /></a>
+            <img src="/image/cart.png" alt="" />
           </li>
+        </a>
         </ul>
       </div>
     </nav>

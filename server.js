@@ -9,7 +9,8 @@ const Session = require("express-session");
 const flash = require('express-flash')
 const app = express();
 const port = process.env.PORT || 3000;
-const MongoStore = require('connect-mongo')
+const MongoStore = require('connect-mongo');
+const passport = require('passport');
 
 
 // mongoose connection
@@ -21,6 +22,8 @@ connecting.once('open',() => {
 }).on('error', (error) => {
   console.warn('Some error', error);
 });
+
+
 
 //Session Config
 app.use(Session({
@@ -34,14 +37,29 @@ app.use(Session({
 }));
 
 
+//! passport config
+const passportInit = require('./backend/config/passport');
+passportInit(passport)
+app.use(passport.initialize())
+app.use(passport.session())
+
+
 //! global middleware
 app.use((req,res,next) => {
   res.locals.session = req.session
+  res.locals.user = req.user
   next()
 });
 
+// //! passport config
+// const passportInit = require('./backend/config/passport');
+// passportInit(passport)
+// app.use(passport.initialize())
+// app.use(passport.session())
+
 
 app.use(flash())
+app.use(express.urlencoded({ extended : false}))
 app.use(express.json())
 app.use(expressLayout);
 require("./routes/website")(app);

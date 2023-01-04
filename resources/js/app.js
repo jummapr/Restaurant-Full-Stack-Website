@@ -1,6 +1,7 @@
 let AddBtn = document.querySelectorAll(".add-to-cart");
 import axios from "axios";
 import noty from "noty";
+import initAdmin from "./Admin";
 
 let cartCounter = document.querySelector("#cart-counter");
 const UpdateCart = (pizza) => {
@@ -34,3 +35,15 @@ AddBtn.forEach((btn) => {
     UpdateCart(pizza);
   });
 });
+
+// remove alert success 
+
+const alertSuccess = document.querySelector('#alert-success');
+
+if (alertSuccess) {
+  setTimeout(() => {
+    alertSuccess.remove();
+  }, 2000);
+}
+
+initAdmin();
